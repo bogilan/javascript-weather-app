@@ -1,4 +1,4 @@
-#WORK IN PROGRESS
+# WORK IN PROGRESS
 
 # javascript-weather-app
 Weather App created with HTML, CSS and JavaScript. 
