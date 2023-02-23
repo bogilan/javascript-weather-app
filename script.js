@@ -1,6 +1,6 @@
 const weatherForecastURL = 'https://api.weatherapi.com/v1/forecast.json?key=9415c5aecbad4810a78201126232102&q=';
 
-const searchCityInput = document.getElementById('search-city');
+const searchCityInput = document.getElementById('search-city-input');
 const searchBtn = document.querySelector('.search-btn');
 
 const cityNameEl = document.querySelector('.location-name');
@@ -45,7 +45,7 @@ async function getWeatherData(city) {
 }
 
 function getHourlyForecast(data) {
-  hourlyForecastEl.innerHTML = '<h2>Hourly Forecast</h2>';
+  hourlyForecastEl.innerHTML = '<h2>Rest of the Day</h2>';
   const localtime = new Date(data.location.localtime);
   const hour = localtime.getHours();
   

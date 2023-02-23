@@ -8,37 +8,34 @@
         <title>Weather App</title>
     </head>
     <body>
+        <div class="weather-app-container">
+            <div class="search-location">
+                <label for="search-city-input">Search Location</label>
+                <input type="text" id="search-city-input">
+                <button class="search-btn"><img src="images/search.png" alt=""></button>
+            </div>
 
-        <div class="search-location">
-            <label for="search-city">Search Location</label>
-            <input type="text" id="search-city">
-            <button class="search-btn">Search</button>
-        </div>
+            <div class="current-forecast">
+                <div class="location-info">
+                    <h1 class="location-name"></h1>
+                    <span class="date-time"></span>
+                </div>
+                <div class="weather-info">
+                    <span class="current-temp"></span>
+                </div>
+                <div class="weather-desc">
+                    <img src="" alt="" class="current-weather-icon">
+                    <span class="current-weather-desc"></span>
+                </div>
+                <div class="air-quality">
+                    <p>Air quality: <span class="air-quality-index"></span></p>
+                </div>
+        
+            </div>
 
-        <div class="weather-info">
-            <span class="current-temp"></span>
-            <img src="" alt="" class="current-weather-icon">
-            <span class="current-weather-desc"></span>
-        </div>
+            <div class="hourly-forecast"></div>
 
-        <div class="location-info">
-            <h1 class="location-name"></h1>
-            <span class="date-time"></span>
-        </div>
-
-        <div class="air-quality">
-            <p>Air quality: <span class="air-quality-index"></span></p>
-        </div>
-
-        <div class="current-forecast">
-            
-        </div>
-
-        <div class="hourly-forecast">
-         
-        </div>
-
-        <div class="days-forecast">
+            <div class="days-forecast"></div>
         
         </div>
 
