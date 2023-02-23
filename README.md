@@ -7,4 +7,4 @@ Basic Weather Data fetch using JavaScript.
 
 To do list:
 - get more detailed data
-- add CSS file
+- update CSS styling
