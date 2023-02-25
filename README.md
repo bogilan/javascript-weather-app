@@ -3,8 +3,7 @@
 # javascript-weather-app
 Weather App created with HTML, CSS and JavaScript. 
 
-Basic Weather Data fetch using JavaScript.
 
-To do list:
-- get more detailed data
-- update CSS styling
+
+
+![image](https://user-images.githubusercontent.com/125219883/221366779-ad137b0e-84a3-4397-b848-1b93e5c6ad0f.png)
