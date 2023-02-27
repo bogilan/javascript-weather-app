@@ -16,12 +16,14 @@ body {
     grid-column-gap: 5px;
     grid-row-gap: 5px;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background-image: url("images/pexels-ruvim-3560044.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
-    
+
+/* ==================================== */
+/* Search Area */
 .search-location { 
     grid-area: 1 / 1 / 2 / 3;
     display: flex;
@@ -67,9 +69,10 @@ label[for="search-city-input"] {
 .search-btn > img {
     height: 100%;
 }
+/* ==================================== */
 
-
-
+/* ==================================== */
+/* Current Forecast Details */
 .current-forecast {
     grid-area: 2 / 1 / 3 / 2;
     display: flex;
@@ -78,7 +81,7 @@ label[for="search-city-input"] {
     justify-content: center;
     text-align: center;
 }
-
+/* Location Data*/
 .location-info {
     grid-area: 1 / 1 / 2 / 3;
     color: white;
@@ -89,6 +92,7 @@ label[for="search-city-input"] {
     letter-spacing: 3px;
 }
 
+/* Current Temperature and Weather State */
 .weather-info {
     grid-area: 2 / 1 / 3 / 2;
 }
@@ -115,6 +119,7 @@ label[for="search-city-input"] {
     letter-spacing: 2px;
 }
 
+/* Air Quality */
 .air-quality {
     grid-area: 3 / 1 / 4 / 3;
     font-size: 26px;
@@ -127,9 +132,9 @@ label[for="search-city-input"] {
     color: #e2e2e2;
 }
 
+/* Air Quality States*/
 .good {
     background-color: #00963b;
-    
 }
 
 .moderate {
@@ -151,7 +156,10 @@ label[for="search-city-input"] {
 .hazardous {
     background-color: #532e39; 
 }
+/* ==================================== */
 
+/* ==================================== */
+/* Hourly Forecast for Rest of the Day*/
 .hourly-forecast {
     grid-area: 2 / 2 / 3 / 3;
     display: flex;
@@ -196,8 +204,10 @@ label[for="search-city-input"] {
     height: 100%;
     margin-left: 10px;
 }
+/* ==================================== */
 
-
+/* ==================================== */
+/* 7 Days Forecast */
 .days-forecast {
     grid-area: 3 / 1 / 4 / 3;
     display: flex;
@@ -222,15 +232,133 @@ label[for="search-city-input"] {
     height: 90%;
     text-align: center;
     border-left: 5px solid #94d8ff;
-
 }
+/* ==================================== */
 
-.day .day-date {
-    
-}
-
-
-
+/* API credits */
 #weathreapi {
     position: absolute;
 }
+
+/* ==================================== */
+/* Media Queries for different screen sizes*/
+
+@media (width <= 1000px) {
+    .weather-app-container {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 4fr 1fr;
+    }
+    .days-forecast > h2 {
+        letter-spacing: 1px;
+        font-size: 20px;
+    }
+    .day {
+        font-size: 14px;
+    }    
+
+}
+
+
+@media (width <= 700px) {
+    .weather-app-container {
+        display: flex;
+        flex-direction: column;
+    }
+    .search-location { 
+        flex-direction: row;
+    }
+    label[for="search-city-input"] {
+        display: none;
+    }
+    .search-btn {
+        margin-left: 10px;
+    }
+    .hourly-forecast {
+        margin: 30px 10px;
+    }
+    .hourly-forecast > h2 {
+        font-size: 20px;
+    }  
+    .hour-forecast {
+        margin: 0;
+        font-size: 16px;
+    }
+    .days-forecast {
+        flex-direction: column;
+    }
+    .days-forecast > h2 {
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+    }
+    .day {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 90%;
+        height: 70px;
+        border-top: 5px solid #94d8ff;
+        border-left: none;
+    }    
+    #weathreapi {
+        position: relative;
+    }
+}
+
+/* Galaxy Fold*/
+@media (width <= 300px) {
+    #search-city-input {
+        width: 200px;
+    }
+}
+
+/* 4K Resolution*/
+@media (width >= 2560px) {
+    #search-city-input {
+        width: 500px;
+        height: 60px;
+        font-size: 36px;
+    }
+    label[for="search-city-input"] {
+        font-size: 26px;
+    }
+    .search-btn {
+        width: 60px;
+        height: 60px;
+    }
+    .location-name {
+        font-size: 66px;
+    }
+    .date-time {
+        font-size: 36px;
+    }
+    .current-temp {
+        font-size: 160px;
+    }
+    .current-weather-desc {
+        font-size: 36px;
+    }
+    .air-quality {
+        font-size: 36px;
+    }
+    .hourly-forecast > h2 {
+        font-size: 36px;
+    }
+    .hour-forecast {
+        font-size: 26px;
+        height: 60px;
+    }
+    .hour-forecast :first-child {
+        width: 100px;
+    }
+    .hour-forecast :nth-child(2) {
+        width: 100px;
+    }
+    .days-forecast > h2 {
+        font-size: 36px;
+    }
+    .day {
+        font-size: 26px;
+    }
+}
+
+/* ==================================== */
