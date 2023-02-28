@@ -1,7 +1,9 @@
 # WORK IN PROGRESS
 
 # javascript-weather-app
-Weather App created with HTML, CSS and JavaScript. 
+Weather App created with HTML, CSS and JavaScript.
+
+Responsive and tested for different screen sizes, including 4K.
 
 # Search
 Weather App allows you to search location to get Weather data.
