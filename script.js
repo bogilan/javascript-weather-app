@@ -37,14 +37,13 @@ const airQuality = [
 const searchCityInput = document.getElementById('search-city-input');
 const searchBtn = document.querySelector('.search-btn');
 
-const cityNameEl = document.querySelector('.location-name');
+const locationEl = document.querySelector('.location-name');
 const cityTempEl = document.querySelector('.current-temp');
 const weatherIconEl = document.querySelector('.current-weather-icon');
 const weatherConditionEl = document.querySelector('.current-weather-desc');
 const datetimeEl = document.querySelector('.date-time');
 const airQualityEl = document.querySelector('.air-quality p');
 const airQualityIndexEl = document.querySelector('.air-quality-index');
-
 
 const currentForecastEl = document.querySelector('.current-forecast');
 const daysForecastEl = document.querySelector('.days-forecast');
@@ -70,8 +69,8 @@ async function getWeatherData(city) {
       const res = await fetch(`${weatherForecastURL}${city}&aqi=yes&days=8`);
       const data = await res.json();
 
-      cityNameEl.textContent = data.location.name;
-      cityTempEl.innerHTML = `${data.current.temp_c} &#8451;`;
+      locationEl.innerHTML = `${data.location.name}<br>${data.location.country}`;
+      cityTempEl.innerHTML = `${formatTemp(data.current.temp_c)} &#8451;`;
 
       const localdatetime = new Date(data.location.localtime);
       const weekDay = localdatetime.getDay();
@@ -81,20 +80,15 @@ async function getWeatherData(city) {
       const minutes = String(localdatetime.getMinutes()).padStart(2, '0');
       datetimeEl.textContent = `${getDayName(weekDay)} - ${getMonthName(dateMonth)} ${dateDay}. - ${hours}:${minutes}`;
 
-	  weatherIconEl.src = data.current.condition.icon;
+      weatherIconEl.src = data.current.condition.icon;
       weatherConditionEl.textContent = data.current.condition.text;
 
-	  const airQualityIndex = data.current.air_quality["us-epa-index"];
+      const airQualityIndex = data.current.air_quality["us-epa-index"];
       airQualityIndexEl.textContent = getAirQuality(airQualityIndex);
-	  appendAirQualityClass(airQualityIndexEl.textContent);
-
+      appendAirQualityClass(airQualityIndexEl.textContent);
 
       getHourlyForecast(data);
-
       get7DayForecast(data);
-
-      console.log(data.current)
-
   }
   catch(error) {
       alert('Failed to find, please try again.')
@@ -111,7 +105,7 @@ function getHourlyForecast(data) {
     const { temp_c, condition: { text }, condition: {icon} } = hourData;
     const hourHTML = `<div class="hour-forecast">
                         <span class="hour">${String(hourIndex).padStart(2, '0')}:00</span>
-                        <span class="temp">${roundTemp(temp_c)} &#8451;</span>
+                        <span class="temp">${formatTemp(temp_c)} &#8451;</span>
                         <span class="condition">${text}</span>
                         <img src="${icon}">
                       </div>`;
@@ -120,7 +114,7 @@ function getHourlyForecast(data) {
 }
 
 function get7DayForecast(data) {
-  daysForecastEl.innerHTML = '<h2>7 Days<br>Forecast</h2>';
+  daysForecastEl.innerHTML = '<h2>7 Days Forecast</h2>';
 
   for(let dayIndex = 1; dayIndex < 8; dayIndex++) {
     const dayData = data.forecast.forecastday[dayIndex];
@@ -130,7 +124,7 @@ function get7DayForecast(data) {
     const month = weeklocaldate.getMonth();
     const dayHTML = `<div class="day">
                         <span class="day-date">${getMonthName(month)} ${day}.</span>
-                        <span class="temp">${roundTemp(avgtemp_c)} &#8451;</span>
+                        <span class="temp">${formatTemp(avgtemp_c)} &#8451;</span>
                         <span class="condition">${condition.text}</span>
                         <img src="${condition.icon}">
                       </div>`
@@ -154,6 +148,6 @@ function appendAirQualityClass(name) {
 	airQualityEl.className = `${name.replace(/ /g, '-')}`;
 }
 
-function roundTemp(temp) {
+function formatTemp(temp) {
   return temp.toFixed(0);
 }
