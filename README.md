@@ -6,7 +6,7 @@ Shows location's current temperature, air quality, as well as forecast for the r
 Responsive and tested for different screen sizes, including 4K.
 
 # Search
-Weather App allows you to search location to get Weather data. You can enter both city and country name.
+Weather App allows you to search location to get Weather data. You can enter both city and country name and search with Search Btn or Enter Key.
 
 # Current Weather Details
 Weather details of searched location, with Air Quality, at the moment of search.
